@@ -1,0 +1,122 @@
+{% extends "base.html" %} {% block content %}
+
+<main style="margin-top: 7rem;">
+<div class="container px-0 ">
+    <div class="row d-flex justify-content-center align-items-center mx-auto about-wrapper">
+        <section> <!--title/header-->
+            <h2 class="fw-bold px-0">Twitter Sentiment Analyzer</h2>
+            <h3 class="fw-light px-0 mb-5">A web app designed to display sentiment trends on Twitter</h3>
+        </section>
+        
+        <section> <!--members-->
+            <h4 class="fw-bold px-0 ">Team Members</h4>
+            <div class="card shadow-none mb-5">
+                <div class="container p-2 p-sm-3">
+                    <ul class="team-members mb-0 ps-4">
+                        <li class="mb-sm-0 mb-1">
+                            <div class="d-flex flex-column flex-sm-row">
+                                <div class="member-name me-2">Timothy Machnacki</div>
+                                <div class="member-email">tmachnac@umich.edu</div>
+                            </div>
+                        </li>
+
+                        <li class="mb-sm-0 mb-1">
+                            <div class="d-flex flex-column flex-sm-row">
+                                <div class="member-name me-2">Jasper Drumm</div>
+                                <div class="member-email">jasperd@umich.edu</div>
+                            </div>
+                        </li>
+
+
+                        <li class="mb-sm-0 mb-1">
+                            <div class="d-flex flex-column flex-sm-row">
+                                <div class="member-name me-2">William Morland</div>
+                                <div class="member-email">wmorland@umich.edu</div>
+                            </div>
+                        </li>
+
+                        <li class="mb-sm-0 mb-1">
+                            <div class="d-flex flex-column flex-sm-row">
+                                <div class="member-name me-2">Evan Parres</div>
+                                <div class="member-email">evparres@umich.edu</div>
+                            </div>
+                        </li>
+
+                        <li>
+                            <div class="d-flex flex-column flex-sm-row">
+                                <div class="member-name me-2">Alexander Pohlman</div>
+                                <div class="member-email">apohlman@umich.edu</div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div> <!--end card-->
+        </section>
+
+        <section> <!--overview-->
+            <h4 class="fw-bold px-0">Overview</h4>
+            <div class="card shadow-none mb-5">
+                <div class="container p-2 p-sm-3">
+                    <p class="p-0 mb-3">
+                        Our web application uses a pre-trained BERT-base model from <a href="https://github.com/pysentimiento/pysentimiento">PySentimiento</a>
+                        to analyze and determine the sentiment from retreived tweets. The model used in our application also utilizes Twitter-specific tokenization to 
+                        pre-process tweets for better accuracy metrics. For detailed descriptions of our approach, methodology, and experience in working with different 
+                        models and classifiers please view our written report and poster.
+                    </p>
+                    <div class="d-flex mb-1 justify-content-start">
+                        <a href="{{ url_for('return_doc', file='EECS 486 Final Poster.pdf') }}" class="btn btn-primary me-2">
+                            <i class="bi bi-file-earmark-image-fill me-1"></i>Poster
+                        </a>
+
+                        <a href="{{ url_for('return_doc', file='FinalReportFormat.pdf') }}" class=" btn btn-primary">
+                            <i class="bi bi-file-text-fill me-1"></i>Report
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section> <!--Usage-->
+            <h4 class="fw-bold px-0 mb-3">Usage</h4>
+            <div class="alert alert-primary mb-3 p-2 p-sm-3" role="alert">
+                We ask that you do not spam becuase we are limited to 500,000 tweet retrievals per month and 25 requests per 15 minutes due to our basic Twitter API license.
+            </div>
+
+            <div class="container mx-auto px-sm-3 px-2">
+                <h6>1. <strong>Enter your query</strong></h6>
+                <div class="card shadow-none mb-4 px-3 py-2">
+                    <p>Search for a topic, brand, company, product, etc. (i.e. Thursday Night Football, Coke, Amazon) by typing in the search bar.</p>
+                    <div class="container-fluid p-1 p-sm-2 p-lg-3">
+                        <img class="img-fluid" src="{{ url_for('return_img', file='search.gif') }}" alt="search field gif">
+                    </div>
+
+                </div>
+
+                <h6>2. <strong>Select a date range</strong></h6>
+                <div class="card shadow-none mb-4 px-3 py-2">
+                    <p>Choose over which dates you want to analyze tweets from by selecting a "start" and "end" date. Our tool is limited to retrieving tweets from only the past 5 days due to our Twitter API license.</p> 
+                    <div class="container-fluid p-1 p-sm-2 p-lg-3">
+                        <img class="img-fluid" src="{{ url_for('return_img', file='date.gif') }}" alt="date field gif">
+                    </div>
+                </div>
+
+                <h6>3. <strong>Select the amount of tweets per day to analyze</strong></h6>
+                <div class="card shadow-none mb-4 px-3 py-2">
+                    <p>Use the slider to select the desired amount of tweets per day to analyze. We are limited to retrieving a relatively low number of tweets per day due to our API license. Note that selecting more tweets will result in slower results.</p>
+                    <p>You can now get your results or reset the form if you are unhappy with your query parameters.</p>
+                    <div class="container-fluid p-1 p-sm-2 p-lg-3">
+                        <img class="img-fluid" src="{{ url_for('return_img', file='tweets.gif') }}" alt="tweets per day field gif">
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+</main>
+
+<!--about nav-->
+<script typ="text/javascript">
+    document.getElementById('about-nav').classList.add('active');
+</script>
+
+{% endblock %}

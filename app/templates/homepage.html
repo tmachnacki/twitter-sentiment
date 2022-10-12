@@ -1,0 +1,170 @@
+{% extends "base.html" %} {% block content %}
+<main style="margin-top: 10rem;">
+<div class="container">
+    <!--Form-->
+    <div class="row d-flex justify-content-center align-items-center px-1 p-sm-0">
+        <div id="search-wrapper" class="card mx-auto shadow rounded-2 mb-5">
+            <form id="input-form" class="container py-sm-4 py-3 px-sm-3 px-1" action="{{ url_for('home') }}" method="post" enctype="multipart/form-data">
+                <!--search bar-->                
+                <div class="row mb-4">
+                    <div class="col-12 col-sm-6">
+                        <div class="d-flex">
+                            <div class="input-group">
+                                <span class="input-group-text" id="basic-addon"><i class="bi bi-search"></i></span>
+                                <input 
+                                    id="query"
+                                    class="form-control" 
+                                    type="search" 
+                                    name="query"  
+                                    placeholder="Search" 
+                                    aria-label="Search" 
+                                    required 
+                                    aria-required="true"
+                                    aria-describedby="basic-addon"
+                                />
+                              </div>
+                        </div>      
+                    </div>
+                </div>
+
+                <div class="row mb-4">
+                    <!--start date range-->
+                    <div class="col-12 col-sm-6 mb-4 mb-sm-0">
+                        <label for="start" class="form-label">Start date:</label>
+                        <input
+                            id="start"
+                            class="form-control"
+                            name="start"
+                            type="date" 
+                            value="{{ min_date }}"
+                            min="{{ min_date }}" 
+                            max="{{ max_date }}"
+                            required
+                            aria-required="true"
+                            oninput="handleStartUpdate()"
+                        />
+                    </div>
+
+                    <!--max date range-->
+                    <div class="col-12 col-sm-6">
+                        <label for="end" class="form-label">End date:</label>
+                        <input 
+                            id="end"
+                            class="form-control"
+                            name="end"
+                            type="date"  
+                            value="{{ max_date }}"
+                            min="{{ min_date }}" 
+                            max="{{ max_date }}"
+                            required
+                            aria-required="true"
+                        />
+                    </div>
+                </div>
+
+                <!--tweets/day slider-->
+                <div class="row mb-4">
+                    <div class="col-12 col-sm-6">
+                        <label for="tweets_per_day">Tweets to analyze per day:</label>
+                        <div class="slider">
+                            <input 
+                                id="tweets_per_day" type="range" class="form-range" min="10" max="100" value="50" step="10" name="tweets_per_day" oninput="rangeValue.innerText = this.value" >
+                            <div id="rangeValue">50</div>
+                        </div>
+                    </div>
+                </div>
+               
+                <!--submit & clear buttons-->
+                <div class="row">
+                    <div class="col-12 d-flex justify-content-sm-start justify-content-center align-items-center">
+                        <input
+                            id="clearBtn"
+                            class="btn btn-outline-secondary me-2"
+                            type="button"
+                            value="Reset"
+                            onclick="handleClearForm()"
+                        />
+                        <input 
+                            id="submitBtn"
+                            class="btn btn-primary" 
+                            type="submit" 
+                            name="submit" 
+                            value="Analyze"
+                            onclick="handleSpinner()"
+                        />
+                    </div>
+                </div>
+            </form>
+        </div> <!--end card/wrapper-->
+
+        <!--alert placeholder-->
+        {% if error != "" %}
+        <div class="alert alert-danger alert-dismissible fade show my-alert mx-auto mb-5" role="alert">
+            Error: <strong>End Date</strong> must be after <strong>Start Date</strong>.
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {% endif %}
+
+        <!--loader-->
+        <div id="spinner-wrapper" class="col-12 mx-auto d-flex flex-column justify-content-center align-items-center mb-4 d-none">
+            <div class="fs-6 fw-bold mb-3">Working on your results...</div>
+            
+            <div class="spinner-border text-primary"  style="width: 3rem; height: 3rem;" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+        </div>
+    </div> <!--end row-->
+</div> <!--end container-->
+</main>
+
+<!--active home nav-->
+<script type="text/javascript">   
+    let homeNav = document.getElementById('home-nav');
+    homeNav.classList.add('active');
+    homeNav.ariaCurrent = 'page';
+</script>
+
+<!--clear form button-->
+<script type="text/javascript"> 
+    function handleClearForm() {
+        let minStart = "{{min_date|safe}}";
+        let maxEnd = "{{max_date|safe}}";
+    
+        let query = document.getElementById('query');
+        query.value = "";
+
+        let start = document.getElementById('start');
+        start.value = minStart;
+        start.setAttribute("min", minStart.toString());
+        start.setAttribute("max", maxEnd.toString());
+
+        let end = document.getElementById('end');
+        end.value = maxEnd;
+        end.setAttribute("min", minStart.toString());
+        end.setAttribute("max", maxEnd.toString());
+
+        let tweetsPerDay = document.getElementById('tweets_per_day');
+        document.getElementById('rangeValue').innerText = "50"
+        tweetsPerDay.value = "50";  
+    }
+</script>
+
+<!--update end date range-->
+<script type="text/javascript">
+    function handleStartUpdate() {
+        let start = document.getElementById('start');    
+        let end = document.getElementById('end');
+
+        end.setAttribute("min", start.value);
+    }
+</script>
+
+<!--spinner-->
+<script type="text/javascript">
+    function handleSpinner() {
+        let spinnerWrapper = document.getElementById('spinner-wrapper');
+        spinnerWrapper.classList.remove('d-none');
+        spinnerWrapper.classList.add('d-block');
+    }
+</script>
+{% endblock %}

@@ -1,0 +1,66 @@
+{% extends "base.html" %} {% block content %}
+<main style="margin-top: 6rem;">
+<div class="container">
+    <!--back to home button-->
+    <div class="row d-flex justify-content-center align-items-center px-1 p-sm-0 mx-auto">
+        <div class="col-12 mx-auto d-flex justify-content-start back-wrapper px-0 mb-4">
+            <a
+                href="{{ url_for('home') }}"
+                class="btn btn-primary rounded-5"
+            >
+            <i class="bi bi-arrow-90deg-left me-2"></i>New Query
+            </a>
+        </div>
+    </div>
+
+    <!--Heading / summary-->
+    <div class="row d-flex justify-content-center align-items-center px-1 p-sm-0 heading mx-auto mb-4">
+        <div class="col-12 mx-auto d-flex justify-content-start"> <p><strong>Query</strong>: "<span>{{query}}</span>"</p> </div>
+
+        <div class="col-12 mx-auto d-flex justify-content-start"> <p><strong>Dates</strong>: [<span id="startPlaceholder"></span>, <span id="endPlaceholder"></span></p>] </div>
+
+        <div class="col-12 mx-auto d-flex justify-content-start"> <p><strong>Tweets / Day</strong>: <span>{{tweets_per_day}}</span></p> </div>
+    </div>
+
+    <!--img cards-->
+    <div class="card shadow mx-auto chart-card mb-5 border-0 rounded-2  text-center ">
+        <div class="card-header text-bg-light fs-5 chart-title">
+           Average Sentiment vs Date for "<strong>{{query}}</strong>"
+        </div>
+        <div class="container container-fluid pb-sm-5 pb-2">
+            <img alt="average sentiment" class="img-fluid chart-img w-100 h-auto" src="{{url_for('return_img', file='avg_sentiment.jpg')}}" />
+        </div>
+    </div>
+
+    <div class="card shadow mx-auto chart-card mb-5 border-0 rounded-2  text-center ">
+        <div class="card-header text-bg-light fs-5 chart-title">
+            Count of Analyzed Tweets vs Sentiment for "<strong>{{query}}</strong>"
+        </div>
+        <div class="container container-fluid pb-sm-5 pb-2">
+            <img alt="sentiment counts" class="img-fluid chart-img w-100 h-auto" src="{{url_for('return_img', file='sentiment_counts.jpg')}}"/>
+        </div>
+    </div>
+
+    <div class="card shadow mx-auto chart-card mb-5 border-0 rounded-2 text-center ">
+        <div class="card-header text-bg-light fs-5 chart-title">
+            Total Tweet Count vs Date for "<strong >{{query}}</strong>"
+        </div>
+        <div class="container container-fluid pb-sm-5 pb-2">
+            <img alt="tweet counts" class="img-fluid chart-img w-100 h-auto " src="{{url_for('return_img', file='tweet_counts.jpg')}}" />
+        </div>
+    </div>
+</div>
+</main>
+
+<!--format dates passed in-->
+<script type="text/javascript">
+    let startPlaceholder = document.getElementById('startPlaceholder');
+    let start = "{{start|safe}}".split(' ')[0];
+    startPlaceholder.innerText = start;
+
+    let endPlaceholder = document.getElementById('endPlaceholder');
+    let end = "{{end|safe}}".split(' ')[0];
+    endPlaceholder.innerText = end;
+</script>
+
+{% endblock %}
