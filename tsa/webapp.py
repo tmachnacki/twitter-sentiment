@@ -1,6 +1,6 @@
 """
 EECS 486 - Final Project
-app.py
+webapp.py
 
 This file will run the web application for the UI.
 """
@@ -25,9 +25,7 @@ api_keys_file = open("twitter_api_keys.json", "r")
 api_keys = json.load(api_keys_file)["eecs486-project"]
 
 client = tweepy.Client(bearer_token=api_keys["bearer_token"], wait_on_rate_limit=True)
-
 app = flask.Flask(__name__)
-
 
 @app.route("/", methods=["GET", "POST"])
 def home():
@@ -153,6 +151,7 @@ def search(query, start, end, tweets_per_day):
 def return_img(file):
     """Functionaly for static image files."""
     
+    # resolve path at /TSA/static/imgaes/<filename>
     file_path = pathlib.Path(__file__).resolve().parent/'static'/'images'/file
     return flask.send_file(file_path, attachment_filename=file)
 
@@ -160,6 +159,6 @@ def return_img(file):
 @app.route('/documents/<file>', methods=["GET"])
 def return_doc(file):
     """Functionaly for static document files."""
-    
+    # resolve path at /TSA/static/documents/<filename>
     file_path = pathlib.Path(__file__).resolve().parent/'static'/'documents'/file
     return flask.send_file(file_path, attachment_filename=file)
