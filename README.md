@@ -49,6 +49,15 @@ $ export FLASK_ENV=development
 $ flask run
 ```
 
+You will also need to add a Twitter API token (key). Put the following in a file called "twitter_api_keys.json". This file should be in the tsa directory: twitter-setiment/tsa/twitter_api_keys.json
+```
+{
+    "eecs486-project": {
+        "bearer_token": "<your token here>"
+    }
+}
+```
+
 The app should now be running on localhost! Go to the IP given on the command line in
 your browser to use the app, where you can input a query, date range, and number
 of tweets per day to analyze and see graphs with useful information.
