@@ -6,6 +6,16 @@ This is a project completed for EECS 486: Information Retrieval at the Universit
 
 Companies are greatly interested in public perception of the business or its actions, particularly whether that perception is positive perception. We create a tool that quickly allows a company to judge just that, providing sentiment analysis on Tweets in a recent timespan. First, we train multiple models, using combinations of features and machine learning classifiers to find which give the best performance. We also create a web application that retrieves tweets matching a query in a time frame and use our classifier to provide the sentiments of the tweets, to inform company perception.
 
+[Report](https://tmachnacki.github.io/assets/project/twitter-sentiment/FinalReportFormat.pdf)
+[Poster](https://tmachnacki.github.io/assets/project/twitter-sentiment/EECS%20486%20Final%20Poster.pdf)
+
+## Preview
+![home page](https://tmachnacki.github.io/assets/img/portfolio/twitter/home.png)
+![results](https://tmachnacki.github.io/assets/img/portfolio/twitter/results.png)
+![about](https://tmachnacki.github.io/assets/img/portfolio/twitter/about.png)
+![report](https://tmachnacki.github.io/assets/project/twitter-sentiment/FinalReportFormat.pdf)
+![poster](https://tmachnacki.github.io/assets/project/twitter-sentiment/EECS%20486%20Final%20Poster.pdf)
+
 ## Install
 Dataset csv files can be found here (too large for github): https://drive.google.com/file/d/1aWW3-CehYWi0IBcuLrmVAmb8UwjEByY2/view?usp=sharing
 
