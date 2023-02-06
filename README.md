@@ -13,8 +13,8 @@ Companies are greatly interested in public perception of the business or its act
 ![home page](https://tmachnacki.github.io/assets/img/portfolio/twitter/home.png)
 ![results](https://tmachnacki.github.io/assets/img/portfolio/twitter/results.png)
 ![about](https://tmachnacki.github.io/assets/img/portfolio/twitter/about.png)
-![report](https://tmachnacki.github.io/assets/project/twitter-sentiment/FinalReportFormat.pdf)
-![poster](https://tmachnacki.github.io/assets/project/twitter-sentiment/EECS%20486%20Final%20Poster.pdf)
+![report](https://tmachnacki.github.io/assets/img/portfolio/twitter/writeup.png)
+![poster](https://tmachnacki.github.io/assets/img/portfolio/twitter/poster.png)
 
 ## Install
 Dataset csv files can be found here (too large for github): https://drive.google.com/file/d/1aWW3-CehYWi0IBcuLrmVAmb8UwjEByY2/view?usp=sharing
