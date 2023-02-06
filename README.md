@@ -8,7 +8,7 @@ Companies are greatly interested in public perception of the business or its act
 
 [Report](https://tmachnacki.github.io/assets/project/twitter-sentiment/FinalReportFormat.pdf) | [Poster](https://tmachnacki.github.io/assets/project/twitter-sentiment/EECS%20486%20Final%20Poster.pdf)
 
-## Preview
+## [Live Demo](http://ec2-44-211-216-40.compute-1.amazonaws.com/)
 ![home page](https://tmachnacki.github.io/assets/img/portfolio/twitter/home.png)
 ![results](https://tmachnacki.github.io/assets/img/portfolio/twitter/results.png)
 ![about](https://tmachnacki.github.io/assets/img/portfolio/twitter/about.png)
